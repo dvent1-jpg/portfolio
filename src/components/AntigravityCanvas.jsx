@@ -29,7 +29,14 @@ const AntigravityCanvas = ({ isGameActive = false, onGameEnd }) => {
 
         let particles = [];
         let dustParticles = [];
-        const numParticles = window.innerWidth > 768 ? 600 : 300;
+
+        // Motion sensitivity: the fly-at-you warp is a known nausea trigger on
+        // small handheld screens. Detect coarse pointers (phones/tablets) and the
+        // OS reduced-motion preference, and calm the ambient field accordingly.
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+
+        const numParticles = isCoarsePointer ? 160 : 600;
 
         // Parallax smoothed tracker
         let mouseX = window.innerWidth / 2;
@@ -154,11 +161,18 @@ const AntigravityCanvas = ({ isGameActive = false, onGameEnd }) => {
             ctx.restore();
         };
 
+        const calmAmbient = prefersReducedMotion || isCoarsePointer;
+
         class Particle {
             constructor() {
                 this.init();
-                // Randomize Z initially so they spawn naturally dispersed
-                this.z = Math.random() * canvas.width;
+                // In calm mode keep depth in a comfortable mid band so nothing spawns
+                // as a giant foreground streak; otherwise disperse across the full range.
+                this.z = calmAmbient
+                    ? canvas.width * (0.3 + Math.random() * 0.6)
+                    : Math.random() * canvas.width;
+                // Slow lateral drift, used only for the calm ambient field
+                this.vx = (Math.random() - 0.5) * 0.5;
             }
 
             init() {
@@ -173,8 +187,22 @@ const AntigravityCanvas = ({ isGameActive = false, onGameEnd }) => {
             }
 
             update() {
+                const inGame = gamePhase === 'countdown' || gamePhase === 'playing';
+
+                // Calm the ambient field for reduced-motion users and handheld screens.
+                // Gameplay always uses the full warp — it's intentional and focused.
+                if (calmAmbient && !inGame) {
+                    if (prefersReducedMotion) return; // honor the OS setting: hold still
+                    // Gentle lateral drift instead of flying toward the viewer
+                    this.x += this.vx;
+                    const span = canvas.width;
+                    if (this.x - mouseX > span) this.x -= span * 2;
+                    if (this.x - mouseX < -span) this.x += span * 2;
+                    return;
+                }
+
                 // Fly rapidly forward if game is active or counting down, otherwise float ambiently
-                const speed = (gamePhase === 'countdown' || gamePhase === 'playing') ? 4.5 : 1.5;
+                const speed = inGame ? 4.5 : 1.5;
                 this.z -= speed;
 
                 if (this.z <= 0) {
