@@ -74,13 +74,13 @@ export default function Layout({ children }) {
                     <nav className="hidden md:flex gap-8 items-center">
                         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-lg font-medium tracking-tight hover:text-muted-foreground transition-colors">CV</a>
                         <a href="https://linkedin.com/in/dennis-ventrello" target="_blank" rel="noopener noreferrer" className="text-lg font-medium tracking-tight hover:text-muted-foreground transition-colors">LinkedIn</a>
-                        <button onClick={() => setContactOpen(true)} className="text-lg font-medium tracking-tight hover:text-muted-foreground transition-colors">Get in touch</button>
+                        <button onClick={() => setContactOpen(true)} className="text-lg font-medium tracking-tight hover:text-muted-foreground transition-colors cursor-pointer">Get in touch</button>
                         <button
                             onClick={() => {
                                 window.scrollTo({ top: 0, behavior: "smooth" });
                                 setTimeout(() => window.dispatchEvent(new Event('start-space-confetti')), 500);
                             }}
-                            className="inline-flex items-center text-lg font-medium tracking-tight border-2 border-[#bfa2f6] bg-white dark:bg-[#0f1015] px-6 py-2 rounded-full hover:bg-[#f9f5fe] dark:hover:bg-[#21182e] transition-all duration-300"
+                            className="inline-flex items-center text-lg font-medium tracking-tight border-2 border-[#bfa2f6] bg-white dark:bg-[#0f1015] px-6 py-2 rounded-full hover:bg-[#f9f5fe] dark:hover:bg-[#21182e] transition-all duration-300 cursor-pointer"
                         >
                             Play Space Confetti
                         </button>
@@ -109,7 +109,7 @@ export default function Layout({ children }) {
                         <nav className="flex flex-col gap-8 items-start w-full">
                             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-xl font-medium" onClick={() => setMobileMenuOpen(false)}>CV</a>
                             <a href="https://linkedin.com/in/dennis-ventrello" target="_blank" rel="noopener noreferrer" className="text-xl font-medium" onClick={() => setMobileMenuOpen(false)}>LinkedIn</a>
-                            <button className="text-xl font-medium text-left" onClick={() => { setMobileMenuOpen(false); setContactOpen(true); }}>Get in touch</button>
+                            <button className="text-xl font-medium text-left cursor-pointer" onClick={() => { setMobileMenuOpen(false); setContactOpen(true); }}>Get in touch</button>
                             
                             <button 
                                 onClick={() => {
@@ -117,7 +117,7 @@ export default function Layout({ children }) {
                                     window.scrollTo({ top: 0, behavior: "smooth" });
                                     setTimeout(() => window.dispatchEvent(new Event('start-space-confetti')), 500);
                                 }}
-                                className="inline-flex items-center text-xl font-medium border-2 border-[#bfa2f6] bg-white dark:bg-[#0f1015] px-8 py-4 rounded-full hover:bg-[#f9f5fe] dark:hover:bg-[#21182e] transition-all duration-300 mt-4 w-full justify-center"
+                                className="inline-flex items-center text-xl font-medium border-2 border-[#bfa2f6] bg-white dark:bg-[#0f1015] px-8 py-4 rounded-full hover:bg-[#f9f5fe] dark:hover:bg-[#21182e] transition-all duration-300 mt-4 w-full justify-center cursor-pointer"
                             >
                                 Play Space Confetti
                             </button>
