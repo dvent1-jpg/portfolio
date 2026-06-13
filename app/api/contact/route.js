@@ -1,23 +1,27 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export default async function handler(req, res) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+export async function POST(request) {
+    let body;
+    try {
+        body = await request.json();
+    } catch {
+        return Response.json({ error: 'Invalid request body' }, { status: 400 });
     }
 
-    const { name, email, message } = req.body;
+    const { name, email, message } = body;
 
     if (!name || !email || !message) {
-        return res.status(400).json({ error: 'Missing required fields' });
+        return Response.json({ error: 'Missing required fields' }, { status: 400 });
     }
+
+    // Instantiate per-request so the build doesn't require the key to be present.
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     try {
         await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>',
             to: 'dennis.ventrello@gmail.com',
-            reply_to: email,
+            replyTo: email,
             subject: `Portfolio inquiry from ${name}`,
             html: `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -30,9 +34,9 @@ export default async function handler(req, res) {
             `,
         });
 
-        return res.status(200).json({ success: true });
+        return Response.json({ success: true });
     } catch (error) {
         console.error('Resend error:', error);
-        return res.status(500).json({ error: 'Failed to send message' });
+        return Response.json({ error: 'Failed to send message' }, { status: 500 });
     }
 }

@@ -20,17 +20,10 @@
     --border: #e5e7eb;
   }
 
-  .dark {
-    --background: #0f1015;
-    --foreground: #fcfcfc;
-    --muted: #9ca3af;
-    --border: #1f2937;
-  }
-
   body {
     background-color: var(--background);
     color: var(--foreground);
-    @apply font-sans antialiased selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black;
+    @apply font-sans antialiased selection:bg-black selection:text-white;
   }
 }
 

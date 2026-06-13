@@ -1,3 +1,5 @@
+"use client";
+
 import CaseStudyLayout from '../components/CaseStudyLayout';
 import AntigravityCanvas from '../components/AntigravityCanvas';
 import AnimatedNumber from '../components/AnimatedNumber';

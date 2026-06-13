@@ -1,3 +1,5 @@
+"use client";
+
 import CaseStudyLayout from '../components/CaseStudyLayout';
 
 const JeselTransformation = () => {
