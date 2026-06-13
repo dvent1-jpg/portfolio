@@ -457,14 +457,7 @@ const Home = () => {
                   <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-16 mb-16 lg:mb-32 cursor-expand">
                     <div className="w-full lg:w-4/12 flex justify-center perspective-[1200px] z-10">
                       <div className="relative w-full max-w-[240px] sm:max-w-xs lg:max-w-sm">
-                        <motion.div
-                          animate={{ y: [0, -15, 0] }}
-                          transition={{
-                            duration: 6,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                        >
+                        <div>
                           <img
                             src={project.image}
                             alt={project.title}
@@ -475,7 +468,7 @@ const Home = () => {
                               imageRendering: "high-quality",
                             }}
                           />
-                        </motion.div>
+                        </div>
                       </div>
                     </div>
                     <div className="w-full lg:w-8/12 flex flex-col justify-center space-y-10">
@@ -557,14 +550,7 @@ const Home = () => {
                     </div>
                     <div className="w-full lg:w-4/12 flex justify-center perspective-[1200px] z-10 w-full">
                       <div className="relative w-full max-w-[240px] sm:max-w-xs lg:max-w-sm">
-                        <motion.div
-                          animate={{ y: [0, -15, 0] }}
-                          transition={{
-                            duration: 6,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                        >
+                        <div>
                           <img
                             src={project.image}
                             alt={project.title}
@@ -575,7 +561,7 @@ const Home = () => {
                               imageRendering: "high-quality",
                             }}
                           />
-                        </motion.div>
+                        </div>
                       </div>
                     </div>
                   </div>
