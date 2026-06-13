@@ -171,8 +171,6 @@ const AntigravityCanvas = ({ isGameActive = false, onGameEnd }) => {
                 this.z = calmAmbient
                     ? canvas.width * (0.3 + Math.random() * 0.6)
                     : Math.random() * canvas.width;
-                // Slow lateral drift, used only for the calm ambient field
-                this.vx = (Math.random() - 0.5) * 0.5;
             }
 
             init() {
@@ -189,17 +187,11 @@ const AntigravityCanvas = ({ isGameActive = false, onGameEnd }) => {
             update() {
                 const inGame = gamePhase === 'countdown' || gamePhase === 'playing';
 
-                // Calm the ambient field for reduced-motion users and handheld screens.
-                // Gameplay always uses the full warp — it's intentional and focused.
-                if (calmAmbient && !inGame) {
-                    if (prefersReducedMotion) return; // honor the OS setting: hold still
-                    // Gentle lateral drift instead of flying toward the viewer
-                    this.x += this.vx;
-                    const span = canvas.width;
-                    if (this.x - mouseX > span) this.x -= span * 2;
-                    if (this.x - mouseX < -span) this.x += span * 2;
-                    return;
-                }
+                // Hold the ambient field completely still for reduced-motion users and
+                // handheld screens — the fly-at-you warp is a nausea trigger there.
+                // Gameplay always uses the full warp; it's intentional and focused, and
+                // the game only runs on fine-pointer devices anyway.
+                if (calmAmbient && !inGame) return;
 
                 // Fly rapidly forward if game is active or counting down, otherwise float ambiently
                 const speed = inGame ? 4.5 : 1.5;
