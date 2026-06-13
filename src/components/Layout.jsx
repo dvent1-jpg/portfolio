@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
+import ContactModal from './ContactModal';
 
 export default function Layout({ children }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [contactOpen, setContactOpen] = useState(false);
 
     // Initialize theme from localStorage or system preference
     const [theme, setTheme] = useState(() => {
@@ -72,8 +74,8 @@ export default function Layout({ children }) {
                     <nav className="hidden md:flex gap-8 items-center">
                         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-lg font-medium tracking-tight hover:text-muted-foreground transition-colors">CV</a>
                         <a href="https://linkedin.com/in/dennis-ventrello" target="_blank" rel="noopener noreferrer" className="text-lg font-medium tracking-tight hover:text-muted-foreground transition-colors">LinkedIn</a>
-                        <a href="mailto:dennis.ventrello@gmail.com" className="text-lg font-medium tracking-tight hover:text-muted-foreground transition-colors">Get in touch</a>
-                        <button 
+                        <button onClick={() => setContactOpen(true)} className="text-lg font-medium tracking-tight hover:text-muted-foreground transition-colors">Get in touch</button>
+                        <button
                             onClick={() => {
                                 window.scrollTo({ top: 0, behavior: "smooth" });
                                 setTimeout(() => window.dispatchEvent(new Event('start-space-confetti')), 500);
@@ -107,7 +109,7 @@ export default function Layout({ children }) {
                         <nav className="flex flex-col gap-8 items-start w-full">
                             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-xl font-medium" onClick={() => setMobileMenuOpen(false)}>CV</a>
                             <a href="https://linkedin.com/in/dennis-ventrello" target="_blank" rel="noopener noreferrer" className="text-xl font-medium" onClick={() => setMobileMenuOpen(false)}>LinkedIn</a>
-                            <a href="mailto:dennis.ventrello@gmail.com" className="text-xl font-medium" onClick={() => setMobileMenuOpen(false)}>Get in touch</a>
+                            <button className="text-xl font-medium text-left" onClick={() => { setMobileMenuOpen(false); setContactOpen(true); }}>Get in touch</button>
                             
                             <button 
                                 onClick={() => {
@@ -124,6 +126,8 @@ export default function Layout({ children }) {
                 )}
             </AnimatePresence>
 
+            <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+
             <main className="flex-grow pt-24">
                 {children}
             </main>
@@ -134,7 +138,7 @@ export default function Layout({ children }) {
                     <div className="flex gap-8 text-sm font-medium">
                         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-foreground text-muted-foreground transition-colors">CV</a>
                         <a href="https://linkedin.com/in/dennis-ventrello" target="_blank" rel="noopener noreferrer" className="hover:text-foreground text-muted-foreground transition-colors">LinkedIn</a>
-                        <a href="mailto:dennis.ventrello@gmail.com" className="hover:text-foreground text-muted-foreground transition-colors">Get in touch</a>
+                        <button onClick={() => setContactOpen(true)} className="hover:text-foreground text-muted-foreground transition-colors">Get in touch</button>
                     </div>
                 </div>
             </footer>
