@@ -110,7 +110,7 @@ const ArcadeLeaderboard = ({ finalScore, onClose, onPlayAgain }) => {
                             <button 
                                 type="submit"
                                 disabled={initials.length === 0}
-                                className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-bold tracking-widest uppercase py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
+                                className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-bold tracking-widest uppercase py-4 rounded-xl transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
                             >
                                 Submit Score
                             </button>
@@ -163,19 +163,19 @@ const ArcadeLeaderboard = ({ finalScore, onClose, onPlayAgain }) => {
                         <div className="space-y-4 pt-4">
                             <button
                                 onClick={onPlayAgain}
-                                className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-bold tracking-widest uppercase py-4 rounded-xl transition-all transform hover:scale-[1.02]"
+                                className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-bold tracking-widest uppercase py-4 rounded-xl transition-all cursor-pointer transform hover:scale-[1.02]"
                             >
                                 Play Again
                             </button>
                             <button
                                 onClick={onClose}
-                                className="w-full border-2 border-indigo-500/50 hover:bg-indigo-500/10 text-indigo-300 font-bold tracking-widest uppercase py-4 rounded-xl transition-all"
+                                className="w-full border-2 border-indigo-500/50 hover:bg-indigo-500/10 text-indigo-300 font-bold tracking-widest uppercase py-4 rounded-xl transition-all cursor-pointer"
                             >
                                 Return to Portfolio
                             </button>
                             <button
                                 onClick={handleChallenge}
-                                className="w-full text-slate-400 hover:text-indigo-300 text-sm tracking-widest uppercase py-2 transition-colors"
+                                className="w-full text-slate-400 hover:text-indigo-300 text-sm tracking-widest uppercase py-2 transition-colors cursor-pointer"
                             >
                                 {copied ? '✓ Copied to clipboard' : 'Challenge a friend'}
                             </button>
