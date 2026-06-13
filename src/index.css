@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f6f7fb;
+  --color-brand-100: #eef0f7;
+  --color-brand-900: #1a1c23;
+  --color-brand-950: #0f1015;
+
+  --font-sans: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-slide-up: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@layer base {
+  :root {
+    --background: #fdfdfd;
+    --foreground: #0f1015;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+  }
+
+  .dark {
+    --background: #0f1015;
+    --foreground: #fcfcfc;
+    --muted: #9ca3af;
+    --border: #1f2937;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply font-sans antialiased selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Utilities for glassmorphism */
+.glass {
+  @apply backdrop-blur-md;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbars::-webkit-scrollbar {
+  display: none;
+}
+
+/* Proper padding logic to align full-bleed carousels with max-w-7xl (80rem) containers */
+.carousel-padding {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .carousel-padding {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .carousel-padding {
+    padding-left: calc(max(0px, (100vw - 80rem) / 2) + 3rem);
+    padding-right: calc(max(0px, (100vw - 80rem) / 2) + 3rem);
+  }
+}
