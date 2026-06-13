@@ -138,7 +138,7 @@ export default function Layout({ children }) {
                     <div className="flex gap-8 text-sm font-medium">
                         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-foreground text-muted-foreground transition-colors">CV</a>
                         <a href="https://linkedin.com/in/dennis-ventrello" target="_blank" rel="noopener noreferrer" className="hover:text-foreground text-muted-foreground transition-colors">LinkedIn</a>
-                        <button onClick={() => setContactOpen(true)} className="hover:text-foreground text-muted-foreground transition-colors">Get in touch</button>
+                        <button onClick={() => setContactOpen(true)} className="hover:text-foreground text-muted-foreground transition-colors cursor-pointer">Get in touch</button>
                     </div>
                 </div>
             </footer>

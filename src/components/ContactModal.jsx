@@ -60,7 +60,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                     >
                         <button
                             onClick={onClose}
-                            className="absolute top-6 right-6 text-muted-foreground hover:text-foreground transition-colors"
+                            className="absolute top-6 right-6 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                             aria-label="Close"
                         >
                             <X size={20} />
@@ -125,7 +125,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                                             disabled={status === 'sending'}
                                             className="w-full border-2 border-[#bfa2f6] text-foreground font-semibold
                                                 px-8 py-3 rounded-full hover:bg-[#bfa2f6]/10 transition-all duration-300
-                                                disabled:opacity-50 disabled:cursor-not-allowed"
+                                                cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             {status === 'sending' ? 'Sending…' : 'Send message'}
                                         </button>
