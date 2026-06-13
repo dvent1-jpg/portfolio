@@ -55,7 +55,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.98 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative bg-background border border-border rounded-3xl p-10 md:p-14 w-full max-w-lg shadow-2xl"
+                        className="relative bg-white border border-border rounded-3xl p-10 md:p-14 w-full max-w-lg shadow-2xl"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
