@@ -28,6 +28,15 @@ const Home = () => {
     return () => window.removeEventListener('start-space-confetti', handleStart);
   }, []);
 
+  // After hydration the hero's height/position may not be measured yet, which
+  // can leave the scroll-linked fade (useScroll on heroRef) stuck at progress 0
+  // — the evidence sub-headline never appears. Nudge framer-motion to re-measure
+  // once the painted layout is stable.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
