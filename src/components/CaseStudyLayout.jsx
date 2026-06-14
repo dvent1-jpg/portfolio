@@ -1,7 +1,9 @@
+"use client";
+
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const CaseStudyLayout = ({ title, heroImage, overview, metrics, introVideo, children }) => {
     // Scroll tracking for the Hero Image parallax (document level)
@@ -22,7 +24,7 @@ const CaseStudyLayout = ({ title, heroImage, overview, metrics, introVideo, chil
             className="bg-background pb-32 overflow-x-hidden overflow-y-visible"
         >
             <div className="px-6 sm:px-12 max-w-7xl mx-auto pt-8 mb-8">
-                <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-foreground transition-colors group">
+                <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-foreground transition-colors group">
                     <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                     Home
                 </Link>
@@ -86,7 +88,7 @@ const CaseStudyLayout = ({ title, heroImage, overview, metrics, introVideo, chil
             </div>
 
             <div className="px-6 sm:px-12 max-w-4xl mx-auto mt-32 text-center  pt-16">
-                <Link to="/" className="inline-flex items-center gap-2 font-medium hover:gap-4 transition-all text-xl">
+                <Link href="/" className="inline-flex items-center gap-2 font-medium hover:gap-4 transition-all text-xl">
                     <ArrowLeft size={20} /> Home
                 </Link>
             </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState, useRef } from "react";
 import {
   motion,
@@ -8,7 +10,7 @@ import {
   useInView,
   AnimatePresence,
 } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import AntigravityCanvas from "../components/AntigravityCanvas";
 import FullResume from "../components/FullResume";
@@ -500,7 +502,7 @@ const Home = () => {
                         </div>
                         <div className="mt-12">
                           <Link
-                            to={project.slug}
+                            href={project.slug}
                             className="inline-flex items-center text-lg font-semibold text-black border-2 border-[#bfa2f6] px-8 py-3 rounded-full hover:bg-[#bfa2f6]/10 transition-all duration-300 group/link w-fit"
                           >
                             View case study
@@ -540,7 +542,7 @@ const Home = () => {
                         </div>
                         <div className="mt-12">
                           <Link
-                            to={project.slug}
+                            href={project.slug}
                             className="inline-flex items-center text-lg font-semibold text-black border-2 border-[#bfa2f6] px-8 py-3 rounded-full hover:bg-[#bfa2f6]/10 transition-all duration-300 group/link w-fit"
                           >
                             View case study
@@ -606,7 +608,7 @@ const Home = () => {
                         </div>
                         <div className="mt-8 pt-8">
                           <Link
-                            to={project.slug}
+                            href={project.slug}
                             className="inline-flex items-center text-lg font-semibold hover:text-muted-foreground transition-colors group/link"
                           >
                             Read full case study
