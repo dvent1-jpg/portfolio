@@ -10,23 +10,23 @@ const MarriottBookingFunnel = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 w-full">
             <div className="flex flex-col items-center text-center space-y-1">
                 <AnimatedNumber valueStr="322%" colorClass="text-emerald-500" />
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Mobile Step Conversion</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Mobile Step,<br/>Conversion</span>
             </div>
             <div className="flex flex-col items-center text-center space-y-1">
                 <AnimatedNumber valueStr="91%" colorClass="text-indigo-500" />
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Desktop Step Conversion</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Desktop Step,<br/>Conversion</span>
             </div>
             <div className="flex flex-col items-center text-center space-y-1">
                 <AnimatedNumber valueStr="80%" colorClass="text-pink-500" />
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">More Mobile Bookings</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">More Mobile,<br/>Bookings</span>
             </div>
             <div className="flex flex-col items-center text-center space-y-1">
                 <AnimatedNumber valueStr="72%" colorClass="text-amber-500" />
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">More Desktop Bookings</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">More Desktop,<br/>Bookings</span>
             </div>
             <div className="flex flex-col items-center text-center space-y-1">
                 <AnimatedNumber valueStr="300%" colorClass="text-red-500" />
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Increase In Saved Homes</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Increase In,<br/>Saved Homes</span>
             </div>
         </div>
     );
