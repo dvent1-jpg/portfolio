@@ -96,28 +96,6 @@ const Home = () => {
     ));
   };
 
-  const capabilities = [
-    {
-      title: "Organizational Leadership & Ops",
-      description:
-        "Advancing organizational maturity by establishing design operations, mentoring managers, and leading cross-functional teams.",
-    },
-    {
-      title: "Product Strategy & Vision",
-      description:
-        "Prioritizing business outcomes through machine learning, behavioral analysis, and deep funnel optimization.",
-    },
-    {
-      title: "AI-Enabled Experiences",
-      description:
-        "Pioneering industry-first AI features, from natural language search to systemic workflow automation.",
-    },
-    {
-      title: "UX/UI Systems",
-      description:
-        "Developing fully tokenized design systems that bridge the gap between design and engineering to accelerate delivery.",
-    },
-  ];
 
   const projects = [
     {
@@ -639,67 +617,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Core Capabilities */}
-      <section className="py-24 px-6 bg-transparent">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col items-center mb-16 gap-4 pb-8">
-            <motion.h2 className="text-2xl font-semibold mb-4 text-center text-foreground flex flex-col items-center group w-fit mx-auto relative pb-6" whileHover="hover">
-              Core Capabilities
-              {/* Responsive Squiggle */}
-              <motion.svg
-                className="absolute bottom-0 left-0 w-full text-[#bfa2f6] opacity-80"
-                height="16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-              >
-                <motion.path
-                  d="M5 8 Q 20 2, 35 8 T 65 8 T 95 8 T 125 8 T 155 8 T 185 8 T 215 8 T 245 8 T 275 8 T 305 8 T 335 8 T 365 8 T 395 8 T 425 8 T 455 8 T 485 8 T 515 8 T 545 8 T 575 8 T 605 8 T 635 8 T 665 8 T 695 8 T 725 8 T 755 8 T 785 8 T 815 8"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  variants={{
-                    hover: {
-                      d: [
-                        "M5 8 Q 20 2, 35 8 T 65 8 T 95 8 T 125 8 T 155 8 T 185 8 T 215 8 T 245 8 T 275 8 T 305 8 T 335 8 T 365 8 T 395 8 T 425 8 T 455 8 T 485 8 T 515 8 T 545 8 T 575 8 T 605 8 T 635 8 T 665 8 T 695 8 T 725 8 T 755 8 T 785 8 T 815 8",
-                        "M5 8 Q 20 14, 35 8 T 65 8 T 95 8 T 125 8 T 155 8 T 185 8 T 215 8 T 245 8 T 275 8 T 305 8 T 335 8 T 365 8 T 395 8 T 425 8 T 455 8 T 485 8 T 515 8 T 545 8 T 575 8 T 605 8 T 635 8 T 665 8 T 695 8 T 725 8 T 755 8 T 785 8 T 815 8",
-                        "M5 8 Q 20 2, 35 8 T 65 8 T 95 8 T 125 8 T 155 8 T 185 8 T 215 8 T 245 8 T 275 8 T 305 8 T 335 8 T 365 8 T 395 8 T 425 8 T 455 8 T 485 8 T 515 8 T 545 8 T 575 8 T 605 8 T 635 8 T 665 8 T 695 8 T 725 8 T 755 8 T 785 8 T 815 8",
-                      ],
-                      transition: {
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      },
-                    },
-                  }}
-                  transition={{ duration: 1.2, ease: "easeInOut", delay: 0.2 }}
-                />
-              </motion.svg>
-            </motion.h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-            {capabilities.map((cap, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="space-y-4"
-              >
-                <h3 className="text-2xl font-medium">{cap.title}</h3>
-                <p className="text-muted-foreground leading-relaxed text-lg">
-                  {cap.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Full Stylized Resume */}
       <FullResume />
