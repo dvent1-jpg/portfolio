@@ -114,7 +114,7 @@ const JeselTransformation = () => {
                     <div className="relative w-full max-w-5xl">
                         <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}>
                             <img
-                                src="/images/jesel/ad-mockup7.png"
+                                src="/images/jesel/jesel-float-7.png"
                                 alt="Ad Mockup"
                                 className="w-full h-auto rounded-2xl"
                                 style={{ filter: 'drop-shadow(0 40px 30px rgb(0 0 0 / 0.18))' }}
