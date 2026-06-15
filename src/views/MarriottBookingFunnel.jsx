@@ -123,21 +123,21 @@ const MarriottBookingFunnel = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center pt-8 pb-0">
                     <div className="w-full flex justify-center perspective-[1200px] z-10">
                         <div className="relative w-full max-w-sm">
-                            <motion.div style={{ willChange: 'transform' }} animate={{ y: [0, -15, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
+                            <motion.div animate={{ y: [0, -15, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
                                 <img src="/images/booking-funnel/Drawer-1.png" alt="Drawer interface state one" className="w-full h-auto drop-shadow-xl" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
                             </motion.div>
                         </div>
                     </div>
                     <div className="w-full flex justify-center perspective-[1200px] z-10 md:-mt-24">
                         <div className="relative w-full max-w-sm">
-                            <motion.div style={{ willChange: 'transform' }} animate={{ y: [0, -20, 0] }} transition={{ duration: 7, delay: 1.5, repeat: Infinity, ease: 'easeInOut' }}>
+                            <motion.div animate={{ y: [0, -20, 0] }} transition={{ duration: 7, delay: 1.5, repeat: Infinity, ease: 'easeInOut' }}>
                                 <img src="/images/booking-funnel/Drawer-2.png" alt="Drawer interface state two" className="w-full h-auto drop-shadow-xl" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
                             </motion.div>
                         </div>
                     </div>
                     <div className="w-full flex justify-center perspective-[1200px] z-10 md:mt-12">
                         <div className="relative w-full max-w-sm">
-                            <motion.div style={{ willChange: 'transform' }} animate={{ y: [0, -12, 0] }} transition={{ duration: 6.5, delay: 0.5, repeat: Infinity, ease: 'easeInOut' }}>
+                            <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6.5, delay: 0.5, repeat: Infinity, ease: 'easeInOut' }}>
                                 <img src="/images/booking-funnel/Drawer-3.png" alt="Drawer interface state three" className="w-full h-auto drop-shadow-xl" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
                             </motion.div>
                         </div>
