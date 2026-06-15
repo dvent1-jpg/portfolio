@@ -83,6 +83,21 @@ const JeselTransformation = () => {
                 </div>
             </section>
 
+            <section className="w-full mt-32">
+                <div className="w-full flex justify-center perspective-[1200px] z-10 px-4">
+                    <div className="relative w-full max-w-4xl">
+                        <motion.div animate={{ y: [0, -16, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}>
+                            <img
+                                src="/images/jesel/jesel-float-5.png"
+                                alt="Jesel Brand Elevation"
+                                className="w-full h-auto"
+                                style={{ filter: 'drop-shadow(30px 50px 40px rgba(0, 0, 0, 0.2))', imageRendering: 'high-quality' }}
+                            />
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
             <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start mt-32 w-full">
                 <div className="lg:col-span-12 space-y-8">
                     <h2 className="text-3xl font-semibold mb-6 text-[#6d28d9] dark:text-[#bfa2f6]">Elevating the Brand</h2>
