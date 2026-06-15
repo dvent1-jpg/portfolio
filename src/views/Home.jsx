@@ -229,35 +229,36 @@ const Home = () => {
 
   // Scroll Animation Setup
   const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
 
-  // Headline blurs out and fades early (0 to 20% scroll)
-  const headlineOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const headlineBlur = useTransform(
-    scrollYProgress,
-    [0, 0.2],
-    ["blur(0px)", "blur(24px)"],
-  );
+  // useScroll({ target }) can silently fail to initialize in Next.js SSR hydration.
+  // Instead, use raw window scrollY + measure the section height after mount.
+  const { scrollY } = useScroll();
+  const [heroSectionHeight, setHeroSectionHeight] = useState(3000);
 
-  // Prompt the user to scroll immediately; fades out in the first 10%
+  useEffect(() => {
+    const measure = () => {
+      if (heroRef.current) {
+        setHeroSectionHeight(heroRef.current.offsetHeight);
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
+
+  // scrollYProgress: 0 when page top (section starts), 1 when scrolled a full section height
+  const scrollYProgress = useTransform(scrollY, [0, heroSectionHeight], [0, 1], { clamp: true });
+
+  // Headline fades out 0→25% of scroll
+  const headlineOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+  const headlineBlur = useTransform(scrollYProgress, [0, 0.25], ["blur(0px)", "blur(24px)"]);
   const arrowOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
-  // Sub-headline blurs/fades in right after the headline clears (20% to 30%) and
-  // STAYS fully opaque for the rest of the pinned scroll, so it's clearly readable
-  // and centered well before the hero unpins.
-  const subheadlineOpacity = useTransform(
-    scrollYProgress,
-    [0.2, 0.3, 1],
-    [0, 1, 1],
-  );
-  const subheadlineBlur = useTransform(
-    scrollYProgress,
-    [0.2, 0.3, 1],
-    ["blur(24px)", "blur(0px)", "blur(0px)"],
-  );
+  // Subheadline fades in 25→40%, stays fully visible 40→100%
+  // Section is h-[300vh] so pin releases at ~200vh (67%). Subheadline is fully in
+  // at 40% (120vh) — leaving ~80vh of pinned read time before the section scrolls off.
+  const subheadlineOpacity = useTransform(scrollYProgress, [0.25, 0.4, 1], [0, 1, 1]);
+  const subheadlineBlur = useTransform(scrollYProgress, [0.25, 0.4, 1], ["blur(24px)", "blur(0px)", "blur(0px)"]);
 
  
 
@@ -299,61 +300,60 @@ const Home = () => {
          transition={{ duration: 0.8 }}
          className={isGameActive || isGameOver ? "pointer-events-none" : ""}
       >
-        {/* Tuned Sticky Scroll Hero & Evidence */}
-        <section ref={heroRef} className="h-[220vh] md:h-[320vh] relative z-10 -mt-24">
-        <div className="sticky top-0 h-screen flex flex-col justify-center px-6 z-20">
-          <div className="max-w-5xl mx-auto w-full relative flex items-center justify-center h-full">
-            {/* Phase 1: Main Headline */}
-            <motion.div
-              style={{ opacity: headlineOpacity, filter: headlineBlur }}
-              className="absolute inset-0 flex flex-col justify-center pointer-events-none"
-            >
-              <motion.h1
-                initial="initial"
-                animate="animate"
-                variants={staggerContainer}
-                className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-tight md:leading-[1.1] text-center"
+        {/* Hero — h-[300vh] gives ~200vh of pin then 100vh of natural scroll-off */}
+        <section ref={heroRef} className="h-[300vh] relative z-10 -mt-24">
+          <div className="sticky top-0 h-screen flex flex-col justify-center px-6 z-20">
+            <div className="max-w-5xl mx-auto w-full relative flex items-center justify-center h-full">
+
+              {/* Phase 1: Headline */}
+              <motion.div
+                style={{ opacity: headlineOpacity, filter: headlineBlur }}
+                initial={{ opacity: 1 }}
+                className="absolute inset-0 flex flex-col justify-center pointer-events-none"
               >
-                {splitText(
-                  "I build AI enabled experiences that drive conversion,",
-                )}
-                <span className="text-muted-foreground">
-                  {splitText("and teach others to do the same.")}
-                </span>
-              </motion.h1>
-            </motion.div>
+                <motion.h1
+                  initial="initial"
+                  animate="animate"
+                  variants={staggerContainer}
+                  className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-tight md:leading-[1.1] text-center"
+                >
+                  {splitText("I build AI enabled experiences that drive conversion,")}
+                  <span className="text-muted-foreground">
+                    {splitText("and teach others to do the same.")}
+                  </span>
+                </motion.h1>
+              </motion.div>
 
-            {/* Scroll Indicator Arrow */}
-            <motion.div
-              className="absolute bottom-12 left-1/2 -translate-x-1/2 pointer-events-none text-[#a855f7]"
-              style={{ opacity: arrowOpacity }}
-              animate={{ y: [0, 15, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <ArrowDown size={32} strokeWidth={2} />
-            </motion.div>
+              {/* Scroll arrow */}
+              <motion.div
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 pointer-events-none text-[#a855f7]"
+                style={{ opacity: arrowOpacity }}
+                animate={{ y: [0, 15, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ArrowDown size={32} strokeWidth={2} />
+              </motion.div>
 
-            {/* Phase 2: Evidence Subheadline */}
-            <motion.div
-              style={{ opacity: subheadlineOpacity, filter: subheadlineBlur }}
-              className="absolute inset-0 flex flex-col justify-center pointer-events-none"
-            >
-              <p className="text-3xl md:text-4xl lg:text-5xl text-foreground font-medium tracking-tight leading-tight max-w-4xl text-center mx-auto">
-                At{" "}
-                <span className="text-primary">
-                  Marriott’s Homes & Villas
-                </span>{" "}
-                I led a funnel redesign that increased bookings by{" "}
-                <span className="text-emerald-500 font-bold">80%</span>,
-                launched an industry-first AI search experience, and
-                contributed to the platform’s{" "}
-                <span className="text-indigo-500 font-bold">10x</span> revenue
-                growth.
-              </p>
-            </motion.div>
+              {/* Phase 2: Evidence subheadline — same sticky frame, cross-fades in center, scrolls off with section */}
+              <motion.div
+                style={{ opacity: subheadlineOpacity, filter: subheadlineBlur }}
+                className="absolute inset-0 flex flex-col justify-center pointer-events-none"
+              >
+                <p className="text-3xl md:text-4xl lg:text-5xl text-foreground font-medium tracking-tight leading-tight max-w-4xl text-center mx-auto">
+                  At{" "}
+                  <span className="text-primary">Marriott’s Homes & Villas</span>{" "}
+                  I led a funnel redesign that increased bookings by{" "}
+                  <span className="text-emerald-500 font-bold">80%</span>,
+                  launched an industry-first AI search experience, and contributed to
+                  the platform’s{" "}
+                  <span className="text-indigo-500 font-bold">10x</span> revenue
+                  growth.
+                </p>
+              </motion.div>
+
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Where I've been (Logo Ribbon) */}
       <section className="py-24 px-6 bg-background relative z-20">
