@@ -203,35 +203,6 @@ const JeselTransformation = () => {
             </section>
 
             <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start mt-40 w-full">
-                <div className="lg:col-span-12 space-y-12">
-                    <h2 className="text-3xl font-semibold text-[#6d28d9] dark:text-[#bfa2f6]">The Results</h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div className="space-y-4">
-                            <h3 className="text-xl font-semibold">Authority and Reach</h3>
-                            <ul className="space-y-3 text-lg text-muted-foreground">
-                                <li><strong>9x increase</strong> in overall organic search visibility</li>
-                                <li><strong>230% increase</strong> in qualified organic traffic</li>
-                                <li><strong>6 products</strong> achieved Page 1 Google rankings</li>
-                                <li><strong>2 products</strong> achieved top ranking on Page 1</li>
-                                <li><strong>#1 authority</strong> in the premium valve train market, validating brand shift</li>
-                            </ul>
-                        </div>
-                        <div className="space-y-4">
-                            <h3 className="text-xl font-semibold">Engagement and Pipeline</h3>
-                            <ul className="space-y-3 text-lg text-muted-foreground">
-                                <li><strong>From 0 to 41,000</strong> engaged email subscribers, establishing critical sales pipeline</li>
-                                <li><strong>28% average</strong> open rate on emails</li>
-                                <li><strong>8% average</strong> click through rate on emails, confirming the quality of the content strategy</li>
-                                <li><strong>550% audience growth</strong> across primary social channels (FB/IG)</li>
-                                <li><strong>45% increase</strong> in average time on site</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start mt-32 w-full">
                 <div className="lg:col-span-12 space-y-8">
                     <h2 className="text-3xl font-semibold mb-6 text-[#6d28d9] dark:text-[#bfa2f6]">Reflections</h2>
                     <div className="space-y-8 text-xl text-muted-foreground leading-relaxed">
