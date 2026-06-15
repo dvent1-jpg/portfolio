@@ -245,16 +245,17 @@ const Home = () => {
   // Prompt the user to scroll immediately; fades out in the first 10%
   const arrowOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
-  // Sub-headline blurs/fades in early (20% to 35%) and STAYS fully opaque for the
-  // rest of the pinned scroll, so it's clearly readable while the hero is pinned.
+  // Sub-headline blurs/fades in right after the headline clears (20% to 30%) and
+  // STAYS fully opaque for the rest of the pinned scroll, so it's clearly readable
+  // and centered well before the hero unpins.
   const subheadlineOpacity = useTransform(
     scrollYProgress,
-    [0.2, 0.35, 1],
+    [0.2, 0.3, 1],
     [0, 1, 1],
   );
   const subheadlineBlur = useTransform(
     scrollYProgress,
-    [0.2, 0.35, 1],
+    [0.2, 0.3, 1],
     ["blur(24px)", "blur(0px)", "blur(0px)"],
   );
 
@@ -299,7 +300,7 @@ const Home = () => {
          className={isGameActive || isGameOver ? "pointer-events-none" : ""}
       >
         {/* Tuned Sticky Scroll Hero & Evidence */}
-        <section ref={heroRef} className="h-[250vh] relative z-10 -mt-24">
+        <section ref={heroRef} className="h-[220vh] md:h-[320vh] relative z-10 -mt-24">
         <div className="sticky top-0 h-screen flex flex-col justify-center px-6 z-20">
           <div className="max-w-5xl mx-auto w-full relative flex items-center justify-center h-full">
             {/* Phase 1: Main Headline */}
