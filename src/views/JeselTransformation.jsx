@@ -88,7 +88,7 @@ const JeselTransformation = () => {
                     <div className="relative w-full max-w-4xl">
                         <motion.div animate={{ y: [0, -16, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}>
                             <img
-                                src="/images/jesel/jesel-float-5.png"
+                                src="/images/jesel/jesel-float-6.png"
                                 alt="Jesel Brand Elevation"
                                 className="w-full h-auto"
                                 style={{ filter: 'drop-shadow(30px 50px 40px rgba(0, 0, 0, 0.2))', imageRendering: 'high-quality' }}
