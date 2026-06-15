@@ -164,16 +164,27 @@ const JeselTransformation = () => {
             </section>
 
             <section className="w-full mt-40">
-                <div className="w-full flex justify-center perspective-[1200px] z-10 px-4">
-                    <div className="relative w-full max-w-5xl">
-                        <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}>
-                            <img
-                                src="/images/jesel/EmailGroup.png"
-                                alt="Email Campaigns"
-                                className="w-full h-auto rounded-2xl"
-                                style={{ filter: 'drop-shadow(0 40px 30px rgb(0 0 0 / 0.18))' }}
-                            />
-                        </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center pt-12 pb-24">
+                    <div className="w-full flex justify-center perspective-[1200px] z-10 md:-mt-12">
+                        <div className="relative w-full max-w-sm">
+                            <motion.div animate={{ y: [0, -15, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}>
+                                <img src="/images/jesel/jesel-float-2.png" alt="Jesel Email Campaign 2" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
+                            </motion.div>
+                        </div>
+                    </div>
+                    <div className="w-full flex justify-center perspective-[1200px] z-10 md:mt-12">
+                        <div className="relative w-full max-w-sm">
+                            <motion.div animate={{ y: [0, -20, 0] }} transition={{ duration: 7.5, delay: 1.0, repeat: Infinity, ease: 'easeInOut' }}>
+                                <img src="/images/jesel/jesel-float-3.png" alt="Jesel Email Campaign 3" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
+                            </motion.div>
+                        </div>
+                    </div>
+                    <div className="w-full flex justify-center perspective-[1200px] z-10">
+                        <div className="relative w-full max-w-sm">
+                            <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6, delay: 0.5, repeat: Infinity, ease: 'easeInOut' }}>
+                                <img src="/images/jesel/jesel-float-4.png" alt="Jesel Email Campaign 4" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
+                            </motion.div>
+                        </div>
                     </div>
                 </div>
                 <p className="text-sm text-muted-foreground italic mt-6 text-center max-w-3xl mx-auto leading-relaxed">Targeted email campaigns became a key source of engagement and the dramatic increase in site traffic during campaigns was tracked directly through to calls and orders.</p>
