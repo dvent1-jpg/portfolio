@@ -250,7 +250,6 @@ const FullResume = () => {
                     <div>
                         <h4 className="text-sm font-mono tracking-widest text-muted-foreground uppercase mb-6">Skills & Core Capabilities</h4>
                         <ul className="space-y-2 text-foreground font-medium">
-                            <li>Leadership</li>
                             <li>Cross Functional Leadership</li>
                             <li>Team Building & Mentorship</li>
                             <li>Stakeholder Management</li>
@@ -260,7 +259,7 @@ const FullResume = () => {
                     <div>
                         <h4 className="text-sm font-mono tracking-widest text-transparent uppercase mb-6 select-none">Spacer</h4>
                         <ul className="space-y-2 text-foreground font-medium">
-                            <li>Long Term Product Vision</li>
+
                             <li>Product Design</li>
                             <li>Product Strategy</li>
                             <li>UX & UI Design</li>
