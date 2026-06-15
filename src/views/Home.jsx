@@ -307,7 +307,7 @@ const Home = () => {
 
               {/* Phase 1: Headline */}
               <motion.div
-                style={{ opacity: headlineOpacity, filter: headlineBlur }}
+                style={{ opacity: headlineOpacity }}
                 initial={{ opacity: 1 }}
                 className="absolute inset-0 flex flex-col justify-center pointer-events-none"
               >
@@ -315,6 +315,7 @@ const Home = () => {
                   initial="initial"
                   animate="animate"
                   variants={staggerContainer}
+                  style={{ filter: headlineBlur }}
                   className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-tight md:leading-[1.1] text-center"
                 >
                   {splitText("I build AI enabled experiences that drive conversion,")}
@@ -336,10 +337,10 @@ const Home = () => {
 
               {/* Phase 2: Evidence subheadline — same sticky frame, cross-fades in center, scrolls off with section */}
               <motion.div
-                style={{ opacity: subheadlineOpacity, filter: subheadlineBlur }}
+                style={{ opacity: subheadlineOpacity }}
                 className="absolute inset-0 flex flex-col justify-center pointer-events-none"
               >
-                <p className="text-3xl md:text-4xl lg:text-5xl text-foreground font-medium tracking-tight leading-tight max-w-4xl text-center mx-auto">
+                <p style={{ filter: subheadlineBlur }} className="text-3xl md:text-4xl lg:text-5xl text-foreground font-medium tracking-tight leading-tight max-w-4xl text-center mx-auto">
                   At{" "}
                   <span className="text-primary">Marriott’s Homes & Villas</span>{" "}
                   I led a funnel redesign that increased bookings by{" "}
