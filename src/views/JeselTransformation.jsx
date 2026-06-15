@@ -141,14 +141,14 @@ const JeselTransformation = () => {
                     <div className="w-full flex justify-center perspective-[1200px] z-10 md:-mt-12">
                         <div className="relative w-full max-w-sm">
                             <motion.div animate={{ y: [0, -15, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}>
-                                <img src="/images/jesel/jesel-float-8.png" alt="Jesel SEO Results 8" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
+                                <img src="/images/jesel/jesel-float-9.png" alt="Jesel SEO Results 9" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
                             </motion.div>
                         </div>
                     </div>
                     <div className="w-full flex justify-center perspective-[1200px] z-10 md:mt-12">
                         <div className="relative w-full max-w-sm">
                             <motion.div animate={{ y: [0, -20, 0] }} transition={{ duration: 7.5, delay: 1.0, repeat: Infinity, ease: 'easeInOut' }}>
-                                <img src="/images/jesel/jesel-float-9.png" alt="Jesel SEO Results 9" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
+                                <img src="/images/jesel/jesel-float-8.png" alt="Jesel SEO Results 8" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
                             </motion.div>
                         </div>
                     </div>
