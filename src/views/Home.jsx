@@ -234,26 +234,27 @@ const Home = () => {
     offset: ["start start", "end start"],
   });
 
-  // Headline blurs out and fades early (0 to 30% scroll)
-  const headlineOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  // Headline blurs out and fades early (0 to 20% scroll)
+  const headlineOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const headlineBlur = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.2],
     ["blur(0px)", "blur(24px)"],
   );
 
   // Prompt the user to scroll immediately; fades out in the first 10%
   const arrowOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
-  // Sub-headline blurs in and fades in (30% to 50%) and STAYS fully opaque for the rest of the sticky scroll duration (50% to 100%)
+  // Sub-headline blurs/fades in early (20% to 35%) and STAYS fully opaque for the
+  // rest of the pinned scroll, so it's clearly readable while the hero is pinned.
   const subheadlineOpacity = useTransform(
     scrollYProgress,
-    [0.3, 0.5, 1],
+    [0.2, 0.35, 1],
     [0, 1, 1],
   );
   const subheadlineBlur = useTransform(
     scrollYProgress,
-    [0.3, 0.5, 1],
+    [0.2, 0.35, 1],
     ["blur(24px)", "blur(0px)", "blur(0px)"],
   );
 
