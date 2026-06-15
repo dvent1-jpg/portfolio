@@ -230,21 +230,21 @@ const MarriottBlendedAI = () => {
                     <div className="w-full flex justify-center perspective-[1200px] z-10 md:-mt-12">
                         <div className="relative w-full max-w-sm">
                             <motion.div style={{ willChange: "transform" }} animate={{ y: [0, -15, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}>
-                                <img src="/images/ai-search/AI-Search-Mockup.png" alt="Marriott Blended AI Phone 1" className="w-full h-auto drop-shadow-xl" style={{ filter: "drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))" }} />
+                                <img src="/images/ai-search/blended-search-float-1.png" alt="Marriott Blended AI Search Screen 1" className="w-full h-auto drop-shadow-xl" style={{ filter: "drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))" }} />
                             </motion.div>
                         </div>
                     </div>
                     <div className="w-full flex justify-center perspective-[1200px] z-10 md:mt-12">
                         <div className="relative w-full max-w-sm">
                             <motion.div style={{ willChange: "transform" }} animate={{ y: [0, -20, 0] }} transition={{ duration: 7.5, delay: 1.0, repeat: Infinity, ease: "easeInOut" }}>
-                                <img src="/images/ai-search/AI-Search-Mockup.png" alt="Marriott Blended AI Phone 2" className="w-full h-auto drop-shadow-xl" style={{ filter: "drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))" }} />
+                                <img src="/images/ai-search/blended-search-float-3.png" alt="Marriott Blended AI Search Screen 3" className="w-full h-auto drop-shadow-xl" style={{ filter: "drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))" }} />
                             </motion.div>
                         </div>
                     </div>
                     <div className="w-full flex justify-center perspective-[1200px] z-10">
                         <div className="relative w-full max-w-sm">
                             <motion.div style={{ willChange: "transform" }} animate={{ y: [0, -12, 0] }} transition={{ duration: 6, delay: 0.5, repeat: Infinity, ease: "easeInOut" }}>
-                                <img src="/images/ai-search/AI-Search-Mockup.png" alt="Marriott Blended AI Phone 3" className="w-full h-auto drop-shadow-xl" style={{ filter: "drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))" }} />
+                                <img src="/images/ai-search/blended-search-float-2.png" alt="Marriott Blended AI Search Screen 2" className="w-full h-auto drop-shadow-xl" style={{ filter: "drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))" }} />
                             </motion.div>
                         </div>
                     </div>
