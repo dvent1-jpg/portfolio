@@ -137,28 +137,25 @@ const JeselTransformation = () => {
             </section>
 
             <section className="w-full mt-40">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <div className="w-full flex justify-center perspective-[1200px] z-10">
-                        <div className="relative w-full">
-                            <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}>
-                                <img
-                                    src="/images/jesel/googleresults.png"
-                                    alt="Google Search Results"
-                                    className="w-full h-auto rounded-2xl"
-                                    style={{ filter: 'drop-shadow(0 40px 30px rgb(0 0 0 / 0.18))' }}
-                                />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center pt-12 pb-24">
+                    <div className="w-full flex justify-center perspective-[1200px] z-10 md:-mt-12">
+                        <div className="relative w-full max-w-sm">
+                            <motion.div animate={{ y: [0, -15, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}>
+                                <img src="/images/jesel/jesel-float-8.png" alt="Jesel SEO Results 8" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
+                            </motion.div>
+                        </div>
+                    </div>
+                    <div className="w-full flex justify-center perspective-[1200px] z-10 md:mt-12">
+                        <div className="relative w-full max-w-sm">
+                            <motion.div animate={{ y: [0, -20, 0] }} transition={{ duration: 7.5, delay: 1.0, repeat: Infinity, ease: 'easeInOut' }}>
+                                <img src="/images/jesel/jesel-float-9.png" alt="Jesel SEO Results 9" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
                             </motion.div>
                         </div>
                     </div>
                     <div className="w-full flex justify-center perspective-[1200px] z-10">
-                        <div className="relative w-full">
-                            <motion.div animate={{ y: [0, -16, 0] }} transition={{ duration: 7, delay: 1, repeat: Infinity, ease: 'easeInOut' }}>
-                                <img
-                                    src="/images/jesel/SEO.png"
-                                    alt="SEO Results"
-                                    className="w-full h-auto rounded-2xl"
-                                    style={{ filter: 'drop-shadow(0 40px 30px rgb(0 0 0 / 0.18))' }}
-                                />
+                        <div className="relative w-full max-w-sm">
+                            <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6, delay: 0.5, repeat: Infinity, ease: 'easeInOut' }}>
+                                <img src="/images/jesel/jesel-float-10.png" alt="Jesel SEO Results 10" className="w-full h-auto" style={{ filter: 'drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.15))' }} />
                             </motion.div>
                         </div>
                     </div>
