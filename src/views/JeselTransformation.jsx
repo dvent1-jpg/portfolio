@@ -40,11 +40,11 @@ const JeselTransformation = () => {
                         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
                     >
                         <img
-                            src="/images/jesel/Header1.png"
+                            src="/images/jesel/jesel-float-1.png"
                             alt="Jesel Digital Business Transformation"
                             className="w-full h-auto"
                             style={{
-                                filter: 'drop-shadow(0 40px 30px rgb(0 0 0 / 0.18))',
+                                filter: 'drop-shadow(30px 50px 40px rgba(0, 0, 0, 0.2))',
                                 imageRendering: 'high-quality',
                             }}
                         />
