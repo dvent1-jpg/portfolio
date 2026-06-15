@@ -85,7 +85,7 @@ const JeselTransformation = () => {
 
             <section className="w-full mt-32">
                 <div className="w-full flex justify-center perspective-[1200px] z-10 px-4">
-                    <div className="relative w-full max-w-4xl">
+                    <div className="relative w-full max-w-5xl">
                         <motion.div animate={{ y: [0, -16, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}>
                             <img
                                 src="/images/jesel/jesel-float-6.png"
