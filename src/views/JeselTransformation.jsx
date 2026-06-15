@@ -10,23 +10,23 @@ const JeselTransformation = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 w-full">
             <div className="flex flex-col items-center text-center space-y-1">
                 <span className="text-foreground font-bold text-5xl tracking-tighter">#1</span>
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Premium Valvetrain Authority</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Premium Valvetrain,<br />Authority</span>
             </div>
             <div className="flex flex-col items-center text-center space-y-1">
                 <AnimatedNumber valueStr="9x" colorClass="text-emerald-500" />
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Organic Search Visibility</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Organic Search,<br />Visibility</span>
             </div>
             <div className="flex flex-col items-center text-center space-y-1">
                 <AnimatedNumber valueStr="230%" colorClass="text-indigo-500" />
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Organic Traffic Growth</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Organic Traffic,<br />Growth</span>
             </div>
             <div className="flex flex-col items-center text-center space-y-1">
                 <AnimatedNumber valueStr="45%" colorClass="text-amber-500" />
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Time On Site</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Additional Time,<br />On Site</span>
             </div>
             <div className="flex flex-col items-center text-center space-y-1">
                 <AnimatedNumber valueStr="41k" colorClass="text-pink-500" />
-                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Email Subscribers</span>
+                <span className="text-sm md:text-xs lg:text-sm text-muted-foreground font-semibold uppercase tracking-wider leading-snug">Email,<br />Subscribers</span>
             </div>
         </div>
     );
