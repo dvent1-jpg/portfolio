@@ -1,7 +1,6 @@
 "use client";
 
 import CaseStudyLayout from '../components/CaseStudyLayout';
-import AntigravityCanvas from '../components/AntigravityCanvas';
 import AnimatedNumber from '../components/AnimatedNumber';
 import { motion } from 'framer-motion';
 import { Trophy, Tv, TrendingUp, Search, MousePointerClick, Activity, Heart } from 'lucide-react';
@@ -66,7 +65,6 @@ const MarriottBlendedAI = () => {
             metrics={metrics}
             introVideo={heroFloatingImage}
         >
-            <AntigravityCanvas />
 
             <section className="w-full text-center mb-40 mt-32">
                 <p className="max-w-5xl mx-auto text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-foreground leading-[1.4] mb-8">

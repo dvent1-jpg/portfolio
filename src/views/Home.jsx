@@ -8,26 +8,13 @@ import {
   useMotionValue,
   useSpring,
   useInView,
-  AnimatePresence,
 } from "framer-motion";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
-import AntigravityCanvas from "../components/AntigravityCanvas";
 import FullResume from "../components/FullResume";
 import AnimatedNumber from "../components/AnimatedNumber";
-import ArcadeLeaderboard from "../components/ArcadeLeaderboard";
 
 const Home = () => {
-  const [isGameActive, setIsGameActive] = useState(false);
-  const [isGameOver, setIsGameOver] = useState(false);
-  const [finalScore, setFinalScore] = useState(0);
-
-  useEffect(() => {
-    const handleStart = () => setIsGameActive(true);
-    window.addEventListener('start-space-confetti', handleStart);
-    return () => window.removeEventListener('start-space-confetti', handleStart);
-  }, []);
-
   // After hydration the hero's height/position may not be measured yet, which
   // can leave the scroll-linked fade (useScroll on heroRef) stuck at progress 0
   // — the evidence sub-headline never appears. Nudge framer-motion to re-measure
@@ -243,41 +230,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30 antialiased overflow-x-clip">
 
-      {/* Global Game Isolation Layer & Physics Canvas */}
-      <motion.div 
-         className="fixed inset-0 bg-[#0a0f1c] z-[90] pointer-events-none"
-         initial={{ opacity: 0 }}
-         animate={{ opacity: isGameActive || isGameOver ? 1 : 0 }}
-         transition={{ duration: 0.8 }}
-      />
-      <AntigravityCanvas 
-         isGameActive={isGameActive} 
-         onGameEnd={(score) => {
-             setIsGameActive(false);
-             setFinalScore(score);
-             setIsGameOver(true);
-         }} 
-      />
-
-      <AnimatePresence>
-        {isGameOver && (
-            <ArcadeLeaderboard 
-                finalScore={finalScore} 
-                onClose={() => setIsGameOver(false)} 
-                onPlayAgain={() => {
-                    setIsGameOver(false);
-                    // Add a micro-delay to ensure the CRT board fully begins unmounting before re-initializing the space physics block
-                    setTimeout(() => setIsGameActive(true), 50);
-                }}
-            />
-        )}
-      </AnimatePresence>
-
-      <motion.div
-         animate={{ opacity: isGameActive || isGameOver ? 0 : 1 }}
-         transition={{ duration: 0.8 }}
-         className={isGameActive || isGameOver ? "pointer-events-none" : ""}
-      >
+      <>
         {/* Hero — h-[300vh] gives ~200vh of pin then 100vh of natural scroll-off */}
         <section ref={heroRef} className="h-[300vh] relative z-10 -mt-24">
           <div className="sticky top-0 h-screen flex flex-col justify-center px-6 z-20">
@@ -620,7 +573,7 @@ const Home = () => {
 
       {/* Full Stylized Resume */}
       <FullResume />
-      </motion.div>
+      </>
     </div>
   );
 };

@@ -6,18 +6,27 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ContactModal from './ContactModal';
+import AntigravityCanvas from './AntigravityCanvas';
+import ArcadeLeaderboard from './ArcadeLeaderboard';
 
 export default function SiteChrome({ children }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [contactOpen, setContactOpen] = useState(false);
-    // Space Confetti needs a fine pointer to slash particles — hide the trigger
-    // on touch-primary devices where it can't be played.
     const [canPlayGame, setCanPlayGame] = useState(false);
+    const [isGameActive, setIsGameActive] = useState(false);
+    const [isGameOver, setIsGameOver] = useState(false);
+    const [finalScore, setFinalScore] = useState(0);
 
     const pathname = usePathname();
 
     useEffect(() => {
         setCanPlayGame(window.matchMedia('(pointer: fine)').matches);
+    }, []);
+
+    useEffect(() => {
+        const handleStart = () => setIsGameActive(true);
+        window.addEventListener('start-space-confetti', handleStart);
+        return () => window.removeEventListener('start-space-confetti', handleStart);
     }, []);
 
     // Close the mobile menu whenever the route changes
@@ -43,6 +52,35 @@ export default function SiteChrome({ children }) {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
+
+            {/* Game layer — lives in SiteChrome so it's always mounted on every page */}
+            <motion.div
+                className="fixed inset-0 bg-[#0a0f1c] z-[90] pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isGameActive || isGameOver ? 1 : 0 }}
+                transition={{ duration: 0.8 }}
+            />
+            <AntigravityCanvas
+                isGameActive={isGameActive}
+                onGameEnd={(score) => {
+                    setIsGameActive(false);
+                    setFinalScore(score);
+                    setIsGameOver(true);
+                }}
+            />
+            <AnimatePresence>
+                {isGameOver && (
+                    <ArcadeLeaderboard
+                        finalScore={finalScore}
+                        onClose={() => setIsGameOver(false)}
+                        onPlayAgain={() => {
+                            setIsGameOver(false);
+                            setTimeout(() => setIsGameActive(true), 50);
+                        }}
+                    />
+                )}
+            </AnimatePresence>
+
             <header
                 className="fixed -top-[1px] pt-[25px] pb-6 w-full z-50 transition-colors duration-300 ease-in-out bg-background"
                 style={{ backgroundColor: 'var(--background)' }}
@@ -117,7 +155,13 @@ export default function SiteChrome({ children }) {
             <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
 
             <main className="flex-grow pt-24">
-                {children}
+                <motion.div
+                    animate={{ opacity: isGameActive || isGameOver ? 0 : 1 }}
+                    transition={{ duration: 0.8 }}
+                    className={isGameActive || isGameOver ? 'pointer-events-none' : ''}
+                >
+                    {children}
+                </motion.div>
             </main>
 
             <footer className="py-12  mt-20">

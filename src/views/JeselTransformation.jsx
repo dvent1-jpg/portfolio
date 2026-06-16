@@ -1,7 +1,6 @@
 "use client";
 
 import CaseStudyLayout from '../components/CaseStudyLayout';
-import AntigravityCanvas from '../components/AntigravityCanvas';
 import AnimatedNumber from '../components/AnimatedNumber';
 import { motion } from 'framer-motion';
 
@@ -61,7 +60,6 @@ const JeselTransformation = () => {
             metrics={metrics}
             introVideo={heroFloatingImage}
         >
-            <AntigravityCanvas />
 
             <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start mt-40 w-full">
                 <div className="lg:col-span-12 space-y-8">

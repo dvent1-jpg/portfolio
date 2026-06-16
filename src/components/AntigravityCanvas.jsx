@@ -1,17 +1,30 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const AntigravityCanvas = ({ isGameActive = false, onGameEnd }) => {
     const canvasRef = useRef(null);
-    const isGameActiveRef = useRef(isGameActive);
+    const [isActive, setIsActive] = useState(isGameActive);
+    const isGameActiveRef = useRef(isActive);
     const onGameEndRef = useRef(onGameEnd);
+    const setInactiveRef = useRef(null);
 
-    // Keep refs fully synchronized for the inner closure loop
+    // Keep refs current on every render — ref writes are synchronous so no useEffect needed
+    isGameActiveRef.current = isActive;
+    onGameEndRef.current = onGameEnd;
+    setInactiveRef.current = () => setIsActive(false);
+
+    // Propagate prop changes from parent (Home.jsx controls the game there)
     useEffect(() => {
-        isGameActiveRef.current = isGameActive;
-        onGameEndRef.current = onGameEnd;
-    }, [isGameActive, onGameEnd]);
+        setIsActive(isGameActive);
+    }, [isGameActive]);
+
+    // Self-activate when the global event is dispatched — works on any page
+    useEffect(() => {
+        const handleStart = () => setIsActive(true);
+        window.addEventListener('start-space-confetti', handleStart);
+        return () => window.removeEventListener('start-space-confetti', handleStart);
+    }, []);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -340,9 +353,12 @@ const AntigravityCanvas = ({ isGameActive = false, onGameEnd }) => {
                         timeRemaining = 0;
                         gamePhase = 'idle';
                         isGameActiveRef.current = false;
-                        
+
                         if (onGameEndRef.current) {
                             onGameEndRef.current(gameScore);
+                        }
+                        if (setInactiveRef.current) {
+                            setInactiveRef.current();
                         }
                     }
 
@@ -436,19 +452,27 @@ const AntigravityCanvas = ({ isGameActive = false, onGameEnd }) => {
     }, []);
 
     return (
-        <canvas
-            ref={canvasRef}
-            className={`fixed inset-0 w-full h-full transition-all duration-500 ease-in-out ${
-                isGameActive 
-                   ? 'z-[100] pointer-events-auto cursor-none opacity-100' 
-                   : '-z-10 pointer-events-none opacity-100'
-            }`}
-            style={{
-                // Drop the radial mask during gameplay to expose the full arena
-                maskImage: isGameActive ? 'none' : 'radial-gradient(ellipse at center, black 60%, transparent 100%)',
-                WebkitMaskImage: isGameActive ? 'none' : 'radial-gradient(ellipse at center, black 60%, transparent 100%)'
-            }}
-        />
+        <>
+            {/* Dark backdrop — needed on every page, not just homepage */}
+            <div
+                className={`fixed inset-0 bg-[#0a0f1c] z-[90] pointer-events-none transition-opacity duration-500 ${
+                    isActive ? 'opacity-100' : 'opacity-0'
+                }`}
+            />
+            <canvas
+                ref={canvasRef}
+                className={`fixed inset-0 w-full h-full transition-all duration-500 ease-in-out ${
+                    isActive
+                       ? 'z-[100] pointer-events-auto cursor-none opacity-100'
+                       : '-z-10 pointer-events-none opacity-100'
+                }`}
+                style={{
+                    // Drop the radial mask during gameplay to expose the full arena
+                    maskImage: isActive ? 'none' : 'radial-gradient(ellipse at center, black 60%, transparent 100%)',
+                    WebkitMaskImage: isActive ? 'none' : 'radial-gradient(ellipse at center, black 60%, transparent 100%)'
+                }}
+            />
+        </>
     );
 };
 
